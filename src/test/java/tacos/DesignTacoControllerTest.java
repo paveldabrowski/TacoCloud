@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -64,18 +65,18 @@ public class DesignTacoControllerTest {
     when(ingredientRepository.findAll())
         .thenReturn(ingredients);
 
-    when(ingredientRepository.findById("FLTO")).thenReturn(new Ingredient("FLTO", "pszenna", Type.WRAP));
-    when(ingredientRepository.findById("GRBF")).thenReturn(new Ingredient("GRBF", "mielona wołowina", Type.PROTEIN));
-    when(ingredientRepository.findById("CHED")).thenReturn(new Ingredient("CHED", "cheddar", Type.CHEESE));
+    when(ingredientRepository.findById("FLTO")).thenReturn(Optional.of(new Ingredient("FLTO", "pszenna", Type.WRAP)));
+    when(ingredientRepository.findById("GRBF")).thenReturn(Optional.of(new Ingredient("GRBF", "mielona wołowina", Type.PROTEIN)));
+    when(ingredientRepository.findById("CHED")).thenReturn(Optional.of(new Ingredient("CHED", "cheddar", Type.CHEESE)));
 
     design = new Taco();
     design.setName("Test Taco");
 
-    design.setIngredients(
-        Arrays.asList(
-            new Ingredient("FLTO", "pszenna", Type.WRAP),
-            new Ingredient("GRBF", "mielona wołowina", Type.PROTEIN),
-            new Ingredient("CHED", "cheddar", Type.CHEESE)));
+    design.setIngredients(Arrays.asList(
+        new Ingredient("FLTO", "pszenna", Type.WRAP),
+        new Ingredient("GRBF", "mielona wołowina", Type.PROTEIN),
+        new Ingredient("CHED", "cheddar", Type.CHEESE)
+  ));
 
   }
 
