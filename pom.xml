@@ -6,11 +6,11 @@
 
 	<groupId>sia</groupId>
 	<artifactId>taco-cloud</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>taco-cloud</name>
-	<description>Aplikacja Taco Cloud</description>
+	<description>Taco Cloud Example</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,10 +28,6 @@
     	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -76,12 +72,10 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- tag::springDataJpa[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- end::springDataJpa[] -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -91,11 +85,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		<!-- tag::springSecurity[] -->
 		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-			<version>2.0.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- end::springSecurity[] -->
+		
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-test</artifactId>
+    <scope>test</scope> 
+</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -104,8 +105,10 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" lang="pl">
-<head>
-    <title>Aplikacja Taco Cloud</title>
-</head>
-<body>
-    <h1>Rejestrowanie</h1>
-    <img th:src="@{/images/TacoCloud.png}" alt="taco"/>
-    <form method="post" th:action="@{/register}" id="registerForm">
-        <label for="username">Nazwa użytkownika: </label>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Taco Cloud</title>
+  </head>
+  
+  <body>
+    <h1>Register</h1>
+    <img th:src="@{/images/TacoCloud.png}"/>    
+    
+    <form method="POST" th:action="@{/register}" id="registerForm">
+    
+        <label for="username">Username: </label>
         <input type="text" name="username"/><br/>
 
-        <label for="password">Hasło: </label>
+        <label for="password">Password: </label>
         <input type="password" name="password"/><br/>
 
-        <label for="confirm">Potwierdź hasło: </label>
+        <label for="confirm">Confirm password: </label>
         <input type="password" name="confirm"/><br/>
 
-        <label for="fullname">Imię i nazwisko: </label>
+        <label for="fullname">Full name: </label>
         <input type="text" name="fullname"/><br/>
-
-        <label for="street">Ulica: </label>
+    
+        <label for="street">Street: </label>
         <input type="text" name="street"/><br/>
-
-        <label for="city">Miejscowość: </label>
+    
+        <label for="city">City: </label>
         <input type="text" name="city"/><br/>
-
-        <label for="state">Województwo: </label>
+    
+        <label for="state">State: </label>
         <input type="text" name="state"/><br/>
-
-        <label for="zip">Kod pocztowy: </label>
+    
+        <label for="zip">Zip: </label>
         <input type="text" name="zip"/><br/>
-
-        <label for="phone">Telefon: </label>
+    
+        <label for="phone">Phone: </label>
         <input type="text" name="phone"/><br/>
-
-        <input type="submit" value="Zarejestruj"/>
+    
+        <input type="submit" value="Register"/>
     </form>
-</body>
+    
+  </body>
 </html>

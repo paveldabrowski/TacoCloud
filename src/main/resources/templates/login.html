@@ -2,30 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Aplikacja Taco Cloud</title>
-<!--    <link rel="stylesheet" th:href="@{/styles.css}" />-->
+    <title>Taco Cloud</title>
   </head>
   
   <body>
-    <h1>Logowanie</h1>
-    <img th:src="@{/images/Tacocloud.png}"/>
-
-    <div th:if="${error}">Logowanie niedudane. Sprawdź poprawność nazwy użytkownika i hasła.
-    <p th:text="${error}"></p>
+    <h1>Login</h1>
+    <img th:src="@{/images/TacoCloud.png}"/>
+    
+    <div th:if="${error}"> 
+      Unable to login. Check your username and password.
     </div>
-
-    <p>Jesteś nowy? Kliknij <a th:href="@{/register}">tutaj</a>, aby się zarejestrować.</p>
-
+    
+    <p>New here? Click 
+       <a th:href="@{/register}">here</a> to register.</p>
+    
     <!-- tag::thAction[] -->
-    <form method="post" th:action="@{/login}" id="loginForm">
+    <form method="POST" th:action="@{/login}" id="loginForm">
     <!-- end::thAction[] -->
-      <label for="username">Nazwa użytkownika: </label>
-      <input type="text" name="username" id="username"/><br/>
-
-      <label for="password">Hasło: </label>
-      <input type="password" name="username" id="password"/><br/>
-      <input type="submit" value="Zaloguj się"/>
-
+      <label for="username">Username: </label>
+      <input type="text" name="username" id="username" /><br/>
+      
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" /><br/>
+      
+      <input type="submit" value="Login"/>
     </form>
   </body>
 </html>

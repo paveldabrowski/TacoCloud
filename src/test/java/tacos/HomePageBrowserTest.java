@@ -40,10 +40,10 @@ public class HomePageBrowserTest {
     browser.get(homePage);
     
     String titleText = browser.getTitle();
-    Assert.assertEquals("Aplikacja Taco Cloud", titleText);
+    Assert.assertEquals("Taco Cloud", titleText);
     
     String h1Text = browser.findElementByTagName("h1").getText();
-    Assert.assertEquals("Witaj w...", h1Text);
+    Assert.assertEquals("Welcome to...", h1Text);
     
     String imgSrc = browser.findElementByTagName("img")
                                               .getAttribute("src");

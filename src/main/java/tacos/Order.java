@@ -1,4 +1,3 @@
-// tag::allButDetailProperties[]
 package tacos;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,13 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -33,40 +33,34 @@ public class Order implements Serializable {
   
   private Date placedAt;
   
-//end::allButDetailProperties[]
-  @NotBlank(message="Podanie imienia i nazwiska jest obowiązkowe")
+  @ManyToOne
+  private User user;
+  
+  @NotBlank(message="Delivery name is required")
   private String deliveryName;
   
-  @NotBlank(message="Podanie ulicy jest obowiązkowe")
+  @NotBlank(message="Street is required")
   private String deliveryStreet;
   
-  @NotBlank(message="Podanie miejscowości jest obowiązkowe")
+  @NotBlank(message="City is required")
   private String deliveryCity;
   
-  @NotBlank(message="Podanie województwa jest obowiązkowe")
+  @NotBlank(message="State is required")
   private String deliveryState;
   
-  @NotBlank(message="Podanie kodu pocztowego jest obowiązkowe")
+  @NotBlank(message="Zip code is required")
   private String deliveryZip;
 
-  @CreditCardNumber(message="To nie jest prawidłowy numer karty kredytowej")
+  @CreditCardNumber(message="Not a valid credit card number")
   private String ccNumber;
   
   @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
-           message="Wartość musi być w formacie MM/RR")
+           message="Must be formatted MM/YY")
   private String ccExpiration;
 
-  @Digits(integer=3, fraction=0, message="Nieprawidłowy kod CVV")
+  @Digits(integer=3, fraction=0, message="Invalid CVV")
   private String ccCVV;
 
-  /*
-  //tag::allButDetailProperties[]
-  ...
-  
-  //end::allButDetailProperties[]
-   */
-  
-//tag::allButDetailProperties[]
   @ManyToMany(targetEntity=Taco.class)
   private List<Taco> tacos = new ArrayList<>();
   
@@ -80,4 +74,3 @@ public class Order implements Serializable {
   }
   
 }
-//end::allButDetailProperties[]
