@@ -4,7 +4,7 @@ import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 import tacos.Ingredient;
 
-class IngredientResourceAssembler extends 
+class IngredientResourceAssembler extends
           ResourceAssemblerSupport<Ingredient, IngredientResource> {
 
   public IngredientResourceAssembler() {
@@ -15,7 +15,7 @@ class IngredientResourceAssembler extends
   public IngredientResource toResource(Ingredient ingredient) {
     return createResourceWithId(ingredient.getId(), ingredient);
   }
-  
+
   @Override
   protected IngredientResource instantiateResource(
                                             Ingredient ingredient) {
