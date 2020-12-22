@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: sia:tacocloud-messaging-kafka:0.0.9-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/sia/tacocloud-messaging-kafka/0.0.9-SNAPSHOT/tacocloud-messaging-kafka-0.0.9-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/taco-cloud/tacocloud-messaging-kafka/tacocloud-messaging-kafka-0.0.9-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/sia/tacocloud-messaging-kafka/0.0.9-SNAPSHOT/tacocloud-messaging-kafka-0.0.9-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/taco-cloud/tacocloud-messaging-kafka/tacocloud-messaging-kafka-0.0.9-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/sia/tacocloud-messaging-kafka/0.0.9-SNAPSHOT/tacocloud-messaging-kafka-0.0.9-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

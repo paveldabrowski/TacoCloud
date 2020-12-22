@@ -1,0 +1,11 @@
+<h2>Kilka ostatnio przygotowanych tacos...</h2>
+<dl>
+  {{#.}}
+  <dt><b>{{name}}</b></dt>
+  <dd>
+    {{#ingredients}}
+      {{name}}, 
+    {{/ingredients}}
+  </dd>
+  {{/.}}
+</dl>

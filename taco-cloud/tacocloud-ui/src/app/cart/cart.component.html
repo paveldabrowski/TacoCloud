@@ -1,0 +1,127 @@
+<cloud-title>Zamów przygotowane taco</cloud-title>
+
+<p>Przygotowałeś wspaniałe taco. Teraz wyobraź sobie, że zostanie
+  ono dostarczone pod wskazany adres, do domu lub do pracy!</p>
+
+<p *ngIf="(cartItems.length == 0)"><b>Koszyk jest pusty.
+  <a [routerLink]="['../design']">Utwórz nowe</a> lub wybierz z listy
+  <a [routerLink]="['../recents']">ostatnio przygotowanych tacos</a>.</b></p>
+
+<div *ngIf="(cartItems.length > 0)">
+<p>Oto lista ostatnio przygotowanych tacos,
+    które pozostają do Twojej dyspozycji!</p>
+
+    <div class="groupBox groupBoxFull">
+      <div class="groupBoxTitle">Oto moje tacos...</div>
+      <div class="groupBoxContent">
+        <table border="1" width="90%">
+          <thead>
+            <tr>
+              <td>Ilość</td>
+              <td>Nazwa</td>
+              <td>Opis</td>
+              <td>Cena</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItems">
+              <td>
+                <select [(ngModel)]="item.quantity">
+                  <option value="0">Usuń</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </td>
+              <td>The "<span class="caps">{{item.taco.name}}</span>"</td>
+              <td>
+                <ul class="commalist">
+                  <li *ngFor="let ingredient of item.taco.ingredients | nonwraps">{{ingredient.name}}</li>
+                </ul>
+                <span *ngIf="(item.taco.ingredients | wraps)?.length > 0">
+                    <span>zawinięte</span>
+                  <ul class="commalist">
+                      <li *ngFor="let ingredient of item.taco.ingredients | wraps">{{ingredient.name}}</li>
+                  </ul>
+                </span>
+                <span *ngIf="(item.taco.ingredients | wraps)?.length == 0">niezawinięte</span>
+                </td>
+              <td align="right">{{4.99 * item.quantity | currency}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" align="right">Razem:</td>
+              <td align="right"><span>{{cartTotal | currency}}</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="groupBox groupBoxHalf">
+        <div class="groupBoxTitle">Adres odbiorcy...</div>
+        <div class="groupBoxContent">
+          <label for="deliveryName">Imię i nazwisko: </label>
+          <input type="text" [(ngModel)]="model.deliveryName" name="deliveryName" size="40"/>
+          <br/>
+
+          <label for="deliveryStreet">Ulica: </label>
+          <input type="text" [(ngModel)]="model.deliveryStreet" name="deliveryStreet" size="40"/>
+          <br/>
+
+          <label for="deliveryCity">Miejscowość i województwo: </label>
+          <input type="text" [(ngModel)]="model.deliveryCity" name="deliveryCity" size="30"/>
+          <select [(ngModel)]="model.deliveryState" name="deliveryState">
+            <option value="">--</option>
+            <option value="DS">dolnośląskie</option>
+            <option value="KP">kujawsko-pomorskie</option>
+            <option value="LB">lubelskie</option>
+            <option value="LU">lubuskie</option>
+            <option value="LD">łódzkie</option>
+            <option value="MP">małopolskie</option>
+            <option value="MZ">mazowieckie</option>
+            <option value="OP">opolskie</option>
+            <option value="PK">podkarpackie</option>
+            <option value="PL">podlaskie</option>
+            <option value="PO">pomorskie</option>
+            <option value="SL">śląskie</option>
+            <option value="SW">świętokrzyskie</option>
+            <option value="WM">warmińsko-mazurskie</option>
+            <option value="WP">wielkopolskie</option>
+            <option value="ZP">zachodniopomorskie</option>
+          </select>
+          <br/>
+
+          <label for="deliveryZip">Kod pocztowy: </label>
+          <input type="text" [(ngModel)]="model.deliveryZip" name="deliveryZip"/>
+        </div>
+      </div>
+
+      <div class="groupBox groupBoxHalf">
+        <div class="groupBoxTitle">Sposób płatności...</div>
+        <div class="groupBoxContent">
+          <label for="ccNumber">Numer karty kredytowej: </label>
+          <input type="text" [(ngModel)]="model.ccNumber" name="ccNumber"/>
+          <br/>
+
+          <label for="ccExpiration">Data ważności / kod CVV: </label>
+          <input type="text" [(ngModel)]="model.ccExpiration" name="ccExpiration"/>
+          <input type="text" [(ngModel)]="model.ccCVV" name="ccCVV" size="4"/>
+        </div>
+      </div>
+
+      <br/>
+
+      <big-button label="Złóż zamówienie"></big-button>
+      <!-- <input type="submit" value="Złóż zamówienie"/> -->
+    </form>
+</div>

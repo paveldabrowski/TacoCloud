@@ -1,0 +1,42 @@
+<cloud-title>Przygotuj własne taco</cloud-title>
+
+<p>Oferujemy świeże składniki, a Ty dostarczasz inspirację. Wybierz
+  składniki, z których powstanie wspaniałe taco.</p>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="ingredientsblock" style="text-align: center; width: 100%;">
+    <group-box title="Wybierz ciasto">
+      <span *ngFor="let wrap of wraps">
+        <input type="checkbox" (change)="updateIngredients(wrap, $event)" name="ingredients" value="{{wrap.id}}"/>{{wrap.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Wybierz mięso">
+      <span *ngFor="let protein of proteins">
+        <input type="checkbox" (change)="updateIngredients(protein, $event)" name="ingredients" value="{{protein.id}}"/>{{protein.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Wybierz sery">
+      <span *ngFor="let cheese of cheeses">
+        <input type="checkbox" (change)="updateIngredients(cheese, $event)" name="ingredients" value="{{cheese.id}}"/>{{cheese.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Wybierz warzywa">
+      <span *ngFor="let veggie of veggies">
+        <input type="checkbox" (change)="updateIngredients(veggie, $event)" name="ingredients" value="{{veggie.id}}"/>{{veggie.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Wybierz sosy">
+      <span *ngFor="let sauce of sauces">
+        <input type="checkbox" (change)="updateIngredients(sauce, $event)" name="ingredients" value="{{sauce.id}}"/>{{sauce.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Nadaj nazwę przygotowanemu taco">
+      Moje taco będzie miało nazwę<br/>
+      "<input type="text" [(ngModel)]="model.name" name="name" class="nameField"/>"!
+    </group-box>
+  </div>
+
+  <div style="text-align:center; width:100%;">
+    <big-button label="Przygotuj to taco"></big-button>
+  </div>
+</form>
