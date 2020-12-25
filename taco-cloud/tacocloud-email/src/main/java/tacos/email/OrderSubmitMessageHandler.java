@@ -3,6 +3,7 @@ package tacos.email;
 import java.util.Map;
 
 import org.springframework.integration.handler.GenericHandler;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +19,14 @@ public class OrderSubmitMessageHandler
     this.rest = rest;
   }
 
+//  @Override
+//  public Object handle(Order order, Map<String, Object> headers) {
+//    rest.postForObject(apiProps.getUrl(), order, String.class);
+//    return null;
+//  }
+
   @Override
-  public Object handle(Order order, Map<String, Object> headers) {
+  public Object handle(final Order order, final MessageHeaders messageHeaders) {
     rest.postForObject(apiProps.getUrl(), order, String.class);
     return null;
   }
