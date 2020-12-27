@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ingredient-client
+  profiles:
+    active: webclient
+#eureka:
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: true
+
+eureka:
+  client:
+    enabled: true
