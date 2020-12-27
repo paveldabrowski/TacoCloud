@@ -22,7 +22,7 @@ public class IngredientServiceClient {
     return wcBuilder
         .build()
         .get()
-        .uri("http://localhost:51442/ingredients/{id}", ingredientId)
+        .uri("http://ingredient-service/ingredients/{id}", ingredientId)
         .retrieve()
         .bodyToMono(Ingredient.class);
   }
@@ -31,7 +31,7 @@ public class IngredientServiceClient {
     return wcBuilder
         .build()
         .get()
-        .uri("http://localhost:51442/ingredients")
+        .uri("http://ingredient-service/ingredients")
         .retrieve()
         .bodyToFlux(Ingredient.class);
   }

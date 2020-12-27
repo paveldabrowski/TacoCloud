@@ -2,7 +2,7 @@ spring:
   application:
     name: ingredient-client
   profiles:
-    active: feign
+    active: webclient
 #eureka:
 #  client:
 #    registerWithEureka: false
